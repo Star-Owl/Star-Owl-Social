@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@450;600;700&display=swap');
+
+@layer base {
+	:root {
+		--accent: 223deg 74% 58%;
+		--accent-darker: 223deg 74% 48%;
+	}
+}
+
+/* :root {
+	--font-mona-sans: 'Mona Sans';
+} */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 16px;
+	/* line-height: 100%; */
+}
+
+body {
+	@apply h-full bg-color-primary-dark text-color-text leading-none;
+	font-family: Rubik, sans-serif;
+	font-weight: 450;
+}
+
+.icon {
+	position: relative;
+}
+
+.icon::before {
+	position: absolute;
+	content: '';
+	height: 2.25rem;
+	width: 2.25rem;
+	background-color: currentColor;
+	opacity: 0;
+	border-radius: calc(2.25rem / 4);
+	transform: translateX(-18%) scale(0);
+	transition: transform 0.175s ease-in-out;
+}
+
+.icon:hover::before {
+	opacity: 0.12;
+	transform: translateX(-18%) scale(1);
+}
+
+img.emoji {
+	height: 1em;
+	width: 1em;
+	margin: 0 0.1em 0 0.25em;
+	vertical-align: -0.1em;
+	display: inline-block;
+	row-gap: 4px;
+}
+
+/* img.emoji {
+	height: 1em;
+	width: 1em;
+	margin: 0 0.05em 0 0.1em;
+	vertical-align: -0.1em;
+} */
+
+img.emoji ~ img.emoji {
+	margin: 0 0.125em 0 0.1em;
+}
+
+img.emoji:not(:last-of-type) {
+	margin: 0 0.125em 0 0.1em;
+}
+
+.accent_opacity {
+	background-color: hsl(var(--accent) / 0.12);
+	color: hsl(var(--accent));
+}
+
+.accent_opacity:hover:is(.accent_opacity) {
+	background-color: hsl(var(--accent) / 0.12);
+	color: hsl(var(--accent));
+}
+
+body {
+	@apply bg-white text-gray-900 antialiased;
+}
+
+/* Label */
+.TabsTrigger[data-state='active'] {
+	@apply text-color-text;
+}
+
+/* Indicator */
+.TabsTrigger[data-state='active'] span {
+	@apply bg-color-text;
+}
+
+.AccordionContent[data-state='open'] {
+	animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.AccordionContent[data-state='closed'] {
+	animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.AccordionChevron {
+	transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.AccordionTrigger[data-state='open'] > .AccordionChevron {
+	transform: rotate(180deg);
+}
+
+@keyframes slideDown {
+	from {
+		height: 0;
+	}
+	to {
+		height: var(--radix-accordion-content-height);
+	}
+}
+
+@keyframes slideUp {
+	from {
+		height: var(--radix-accordion-content-height);
+	}
+	to {
+		height: 0;
+	}
+}
+
+.DialogOverlay {
+	animation: overlayShow 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.DialogContent {
+	animation: contentShow 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes overlayShow {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes contentShow {
+	from {
+		opacity: 0;
+		transform: translate(-50%, -48%) scale(0.8);
+	}
+	to {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(1);
+	}
+}
+
+.PopoverContent {
+	animation-duration: 500ms;
+	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+	will-change: transform, opacity;
+}
+.PopoverContent[data-state='open'][data-side='top'] {
+	animation-name: slideDownAndFade;
+}
+.PopoverContent[data-state='open'][data-side='right'] {
+	animation-name: slideLeftAndFade;
+}
+.PopoverContent[data-state='open'][data-side='bottom'] {
+	animation-name: slideUpAndFade;
+}
+.PopoverContent[data-state='open'][data-side='left'] {
+	animation-name: slideRightAndFade;
+}
+
+@keyframes slideUpAndFade {
+	from {
+		opacity: 0;
+		transform: translateY(2px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideRightAndFade {
+	from {
+		opacity: 0;
+		transform: translateX(-2px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideDownAndFade {
+	from {
+		opacity: 0;
+		transform: translateY(-2px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideLeftAndFade {
+	from {
+		opacity: 0;
+		transform: translateX(2px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.DropdownMenuContent,
+.HoverCardContent {
+	transform-origin: var(--radix-hover-card-content-transform-origin);
+	animation: scaleIn 0.1s ease-out;
+}
+
+@keyframes scaleIn {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}

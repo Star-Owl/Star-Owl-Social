@@ -1,0 +1,40 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"incremental": true,
+		"baseUrl": ".",
+		"paths": {
+			"@ui/*": ["./src/components/*"],
+			"@rd/*": ["./src/components/radix/*"],
+			"@/components/*": ["components/*"]
+		}
+	},
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"src/pages/error.tsx",
+		"src/validation/password.js"
+	],
+	// "include": [
+	// 	"next-env.d.ts",
+	// 	"**/*.ts",
+	// 	"**/*.tsx",
+	// 	"src/components/radix/PopoverDemo.tsx",
+	// 	"src/components/radix/PopoverDemo.tsx",
+	// 	"src/components/NavItem.tsx"
+	// ],
+	"exclude": ["node_modules"]
+}
