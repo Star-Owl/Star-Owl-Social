@@ -20,14 +20,14 @@ const HeaderProfile: React.FC<HeaderProps> = ({ showBackArrow }) => {
 				<div
 					onClick={handleBack}
 					className="
-                        p-3.5
-                        rounded-[15px]
+                        p-[1rem]
+                        rounded-[1rem]
                         bg-color-overlay
                         backdrop-blur[12px]
                         cursor-pointer
                         transition"
 				>
-					{showBackArrow && <ArrowBack color="white" size={32} />}
+					{showBackArrow && <ArrowBack size={32} />}
 				</div>
 			</div>
 		</div>
